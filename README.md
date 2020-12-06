@@ -1,6 +1,6 @@
 # QF939
 
-Instalção:
+## Instalação:
 
 ```
 ] add https://github.com/pgiraldi/QF939
