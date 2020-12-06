@@ -1,4 +1,4 @@
-function upair(r, data)
+function upair(r, data :: Data)
 
 	r6 = (r^2)^3
 	

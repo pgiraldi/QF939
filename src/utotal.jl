@@ -1,4 +1,4 @@
-function utotal(p, data)
+function utotal(p, data :: Data)
 
 	U = 0.0
 
