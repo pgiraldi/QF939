@@ -2,6 +2,6 @@
 
 Instalção:
 
-'''
+```
 ] add https://github.com/pgiraldi/QF939
-'''
+```
