@@ -18,9 +18,9 @@ end
 
 	data = Data()
 
-	@test QF939.upair(π, data) ≈ -0.0003250451775148634
+	@test isapprox(QF939.upair(π, data), -0.0003250451775148634)
 
 	p = initial_point(data.N, data.side, 0.9)
 
-	@test utotal(p, data) ≈ -7472.164849146468
+	@test isapprox(utotal(p, data), -7472.164849146468)
 end
