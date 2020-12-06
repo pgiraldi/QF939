@@ -1,6 +1,6 @@
 import Random
 
-pertubation(step, sig) = -sig + 2*sig*rand()
+perturbation(step, sig) = -sig + 2*sig*rand()
 
 function initial_point(N, side, tol; seed=123)
 
@@ -13,7 +13,7 @@ function initial_point(N, side, tol; seed=123)
 	p = [ zeros(2) for i in 1:N ]
 
 	l = ceil(Int, sqrt(N))
-	step = (side - tol)/l
+	step = (side-tol)/l
 	
 	if tol > step
 		error("tol must be smaller than $step")
@@ -30,7 +30,7 @@ function initial_point(N, side, tol; seed=123)
 		end
 	end
 
-	sig = (step - tol)/2
+	sig = (step-tol)/2
 
 	ip = 0
 	igrid = 0
@@ -41,12 +41,12 @@ function initial_point(N, side, tol; seed=123)
 
 			igrid += 1
 
-			if findfirst() != nothing
+			if findfirst(isequal(igrid), skip) != nothing
 				continue
 			end
 
 			ip += 1
-			p[ip] .= x .+ pertubation(step, sig)
+			p[ip] .= x .+ perturbation(step, sig)
 			x[2] += step
 		end
 
