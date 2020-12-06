@@ -1,7 +1,7 @@
 name = "QF939"
 uuid = "8dda3f2f-dd7b-4d05-b5d8-056f1d8bde54"
 authors = ["Pedro <pedro@heisenberg.com> and contributors"]
-version = "0.1.0"
+version = "1.0.0"
 
 [compat]
 julia = "1"
