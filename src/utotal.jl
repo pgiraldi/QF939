@@ -1,13 +1,31 @@
-function utotal(p, data :: Data)
+function utotal(p, first_atom, next_atom, data :: Data)
 
 	U = 0.0
 
-	for i in 1:data.N-1, j in i+1:data.N
+	for i in 1:data.N
+		
+		icell = trunc(Int64, p[i][1]/data.cutoff) + 1
+		jcell = trunc(Int64, p[i][2]/data.cutoff) + 1
+		
+		for ic in icell-1:icell+1, jc in jcell-1:jcell+1
 
-		r = rpbc(p[i], p[j], data.side)
+			iw, jw = wrap_cell(data.l, ic, jc)
 
-		if r < data.cutoff
-			U += upair(r, data)
+			j = first_atom[iw, jw]
+
+			while j > 0
+
+				if j > i
+
+					r = rpbc(p[i], p[j], data.side)
+
+					if r < data.cutoff
+						U += upair(r, data)
+					end
+				end
+
+				j = next_atom[j]
+			end
 		end
 	end
 

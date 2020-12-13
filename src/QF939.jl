@@ -9,5 +9,8 @@ module QF939
 	include("./rpbc.jl")
 	include("./upair.jl")
 	include("./utotal.jl")
-	export utotal
+	include("./wrap_cell.jl")
+	include("./initial_linklist.jl")
+	export utotal, initial_linklist
+
 end
