@@ -17,5 +17,7 @@ julia> data = Data()
 
 julia> p = initial_point(data)
 
+julia> first_atom, next_atom = initial_linklist(p, data)
+
 julia> utotal(p, data)
 ```
