@@ -1,10 +1,12 @@
+using FLoops
+
 function utotal(p, data :: Data)
 
 	U = 0.0
 
 	first_atom, next_atom = initial_linklist(p, data)
 
-	for i in 1:data.N
+	@floop for i in 1:data.N
 
 		icell = trunc(Int64, p[i][1]/data.cutoff) + 1
 		jcell = trunc(Int64, p[i][2]/data.cutoff) + 1
@@ -22,7 +24,7 @@ function utotal(p, data :: Data)
 					r = rpbc(p[i], p[j], data.side)
 
 					if r < data.cutoff
-						U += upair(r, data)
+						@reduce U += upair(r, data)
 					end
 				end
 

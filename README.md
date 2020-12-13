@@ -28,7 +28,7 @@ julia> utotal(p, data)
 - [x] Condições periódicas de contorno
 - [x] Estrutura de dados
 - [x] Listas ligadas
-- [ ] Paralelização
+- [x] Paralelização
 
 ## Benchmark
 
@@ -36,5 +36,5 @@ julia> utotal(p, data)
 julia> using BenchmarkTools
 
 julia> @btime utotal($p, $data)
-  5.675 ms (4 allocations: 97.84 KiB)
+  3.986 ms (20138 allocations: 417.97 KiB)
 ```
