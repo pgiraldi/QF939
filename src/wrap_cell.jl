@@ -1,14 +1,19 @@
-function wrap_cell(l, ic, jc)
+function wrap_cell(ic, jc, data)
 
-	wrap = [ic, jc]
+	iw = ic
+	jw = jc
 
-	for i in 1:2
-		if wrap[i] <  1
-			wrap[i] = l
-		elseif wrap[i] > l
-			wrap[i] = 1
-		end
+	if iw < 1
+		iw = data.l
+	elseif iw > data.l
+		iw = 1
 	end
 
-	return wrap[1], wrap[2]
+	if jw < 1
+		jw = data.l
+	elseif jw > data.l
+		jw = 1
+	end
+
+	return iw, jw
 end

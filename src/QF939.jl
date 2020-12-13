@@ -6,11 +6,11 @@ module QF939
 	include("./initial_point.jl")
 	export initial_point
 
+	include("./initial_linklist.jl")
 	include("./rpbc.jl")
+	include("./wrap_cell.jl")
 	include("./upair.jl")
 	include("./utotal.jl")
-	include("./wrap_cell.jl")
-	include("./initial_linklist.jl")
-	export utotal, initial_linklist
+	export utotal
 
 end
