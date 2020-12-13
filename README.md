@@ -1,6 +1,6 @@
 # QF939
 
-Pacote de simulação desenvolvido na disciplina QF939 
+Pacote de simulação desenvolvido na disciplina QF939.
 
 ## Instalação:
 
@@ -31,6 +31,8 @@ julia> utotal(p, data)
 - [x] Paralelização
 
 ## Benchmark
+
+Boa parte da alocação de memória é proveniente da paralelização, porém dentro da função `utotal` são feitas 4 alocações devido a inicialização dos arrays para geras a lista ligada.
 
 ```julia
 julia> using BenchmarkTools
