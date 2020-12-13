@@ -24,7 +24,7 @@ julia> utotal(p, data)
 ## Propriedades implementadas
 
 - [x] Distâncias mínimas
-- [x] Células ligas
+- [x] Células ligadas
 - [x] Condições periódicas de contorno
 - [x] Estrutura de dados
 - [x] Listas ligadas
