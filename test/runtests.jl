@@ -22,5 +22,7 @@ end
 
 	p = initial_point(data.N, data.side, 0.9)
 
-	@test isapprox(utotal(p, data), -7472.164849146468)
+	first_atom, next_atom = initial_linklist(p, data)
+
+	@test isapprox(utotal(p, first_atom, next_atom, data), -7472.164849146468)
 end
