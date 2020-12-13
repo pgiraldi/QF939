@@ -32,7 +32,7 @@ julia> utotal(p, data)
 
 ## Benchmark
 
-Boa parte da alocação de memória é proveniente da paralelização, porém dentro da função `utotal` são feitas 4 alocações devido a inicialização dos arrays para geras a lista ligada.
+Boa parte da alocação de memória é proveniente da paralelização, porém dentro da função `utotal` são feitas 4 alocações devido a inicialização dos arrays para gerar a lista ligada.
 
 ```julia
 julia> using BenchmarkTools
