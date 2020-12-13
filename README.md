@@ -10,6 +10,12 @@ Pacote de simulação desenvolvido na disciplina QF939.
 
 ## Utilização
 
+Para melhor proveito da paralelização, iniciar o programa utilizando a opção `-t ncpus`, onde *ncpus* é o número de núcleos que serão utilizados. Caso não seja especificado apenas um núcleo é usado, porém a performance é prejudicada.
+
+```sh
+$ julia -t 4
+```
+
 ```julia
 julia> using QF939
 
