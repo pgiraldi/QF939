@@ -2,7 +2,7 @@
 
 Pacote de simulação desenvolvido na disciplina QF939.
 
-## Instalação:
+## Instalação
 
 ```julia
 ] add https://github.com/pgiraldi/QF939
