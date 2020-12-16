@@ -34,7 +34,7 @@ julia> utotal(p, data)
 - [x] Condições periódicas de contorno
 - [x] Estrutura de dados
 - [x] Listas ligadas
-- [x] Paralelização
+- [ ] Paralelização
 
 ## Benchmark
 

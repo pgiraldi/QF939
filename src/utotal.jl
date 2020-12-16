@@ -13,7 +13,7 @@ function utotal(p, data :: Data)
 
 		for ic in icell-1:icell+1, jc in jcell-1:jcell+1
 
-			iw, jw = wrap_cell(ic, jc, data)
+			iw, jw = wrap_cell(ic, jc, data.l)
 
 			j = first_atom[iw, jw]
 
@@ -24,7 +24,7 @@ function utotal(p, data :: Data)
 					r = rpbc(p[i], p[j], data.side)
 
 					if r < data.cutoff
-						@reduce U += upair(r, data)
+						U += upair(r, data)
 					end
 				end
 
