@@ -32,7 +32,7 @@ julia> utotal(p, data)
 
 ## Benchmark
 
-Dentro da função `utotal` são feitas 4 alocações devido a inicialização dos arrays para gerar a lista ligada.
+Dentro da função `utotal` são feitas 4 alocações devido a inicialização dos arrays para gerar a lista ligada através da função `initial_linklist`.
 
 ```julia
 julia> using BenchmarkTools
