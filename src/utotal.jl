@@ -1,12 +1,10 @@
-using FLoops
-
 function utotal(p, data :: Data)
 
 	U = 0.0
 
 	first_atom, next_atom = initial_linklist(p, data)
 
-	@floop for i in 1:data.N
+	for i in 1:data.N
 
 		icell = trunc(Int64, p[i][1]/data.cutoff) + 1
 		jcell = trunc(Int64, p[i][2]/data.cutoff) + 1

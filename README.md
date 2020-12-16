@@ -10,12 +10,6 @@ Pacote de simulação desenvolvido na disciplina QF939.
 
 ## Utilização
 
-Para melhor proveito da paralelização, iniciar o programa utilizando a opção `-t ncpus`, onde *ncpus* é o número de núcleos que serão utilizados. Caso não seja especificado apenas um núcleo é usado, porém a performance é prejudicada.
-
-```sh
-$ julia -t 4
-```
-
 ```julia
 julia> using QF939
 
@@ -38,11 +32,11 @@ julia> utotal(p, data)
 
 ## Benchmark
 
-Boa parte da alocação de memória é proveniente da paralelização, porém dentro da função `utotal` são feitas 4 alocações devido a inicialização dos arrays para gerar a lista ligada.
+Dentro da função `utotal` são feitas 4 alocações devido a inicialização dos arrays para gerar a lista ligada.
 
 ```julia
 julia> using BenchmarkTools
 
 julia> @btime utotal($p, $data)
-  3.986 ms (20138 allocations: 417.97 KiB)
+  5.612 ms (4 allocations: 97.84 KiB)
 ```
