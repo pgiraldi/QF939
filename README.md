@@ -10,7 +10,7 @@ Pacote de simulação desenvolvido na disciplina QF939.
 
 ## Utilização
 
-Para melhor proveito da paralelização, iniciar o programa utilizando a opção `--threads ncpus`, onde *ncpus* é o número de núcleos que serão utilizados. Caso não seja especificado apenas um núcleo é usado.
+Para melhor proveito da paralelização, iniciar o programa utilizando a opção `--threads ncpus`, onde *ncpus* é o número de núcleos que serão utilizados. Caso não especificado, apenas um núcleo é usado.
 
 ```sh
 $ julia --threads 4
@@ -38,7 +38,7 @@ julia> utotal(p, data)
 
 ## Benchmark
 
-Dentro da função `utotal` são feitas 4 alocações devido a inicialização dos arrays para gerar a lista ligada através da função `initial_linklist`. Além disso, são feitas 2 alocação devido a distribuição de tarefas e diversas outras relativas a paralelização.
+Dentro da função `utotal` são feitas 4 alocações devido a inicialização dos arrays para gerar a lista ligada através da função `initial_linklist`, 2 alocações devido a distribuição de tarefas através da função `div_threads` e diversas outras relativas a paralelização.
 
 ```julia
 julia> using BenchmarkTools
