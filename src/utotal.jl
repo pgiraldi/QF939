@@ -2,36 +2,42 @@ function utotal(p, data :: Data)
 
 	@unpack N, cutoff, side, l = data
 
-	U = 0.0
+	nt = Threads.nthreads()
 
+	U = zeros(nt)
+
+	npt = div_thread(N, nt)
 	first_atom, next_atom = initial_linklist(p, data)
 
-	for i in 1:data.N
+	Threads.@threads for id in 1:nt
 
-		icell = trunc(Int64, p[i][1]/cutoff) + 1
-		jcell = trunc(Int64, p[i][2]/cutoff) + 1
+		@inbounds for i in npt[id, 1]:npt[id, 2]
 
-		for ic in icell-1:icell+1, jc in jcell-1:jcell+1
+			icell = trunc(Int64, p[i][1]/cutoff) + 1
+			jcell = trunc(Int64, p[i][2]/cutoff) + 1
 
-			iw, jw = wrap_cell(ic, jc, l)
+			for ic in icell-1:icell+1, jc in jcell-1:jcell+1
 
-			j = first_atom[iw, jw]
+				iw, jw = wrap_cell(ic, jc, l)
 
-			while j > 0
+				j = first_atom[iw, jw]
 
-				if j > i
+				while j > 0
 
-					r = rpbc(p[i], p[j], side)
+					if j > i
 
-					if r < cutoff
-						U += upair(r, data)
+						r = rpbc(p[i], p[j], side)
+
+						if r < cutoff
+							U[id] += upair(r, data)
+						end
 					end
-				end
 
-				j = next_atom[j]
+					j = next_atom[j]
+				end
 			end
 		end
 	end
 
-	return U
+	return sum(U)
 end
