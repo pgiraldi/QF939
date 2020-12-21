@@ -1,12 +1,14 @@
 function initial_linklist(p, data :: Data)
 
-	first_atom = zeros(Int64, data.l, data.l)
-	next_atom = zeros(Int64, data.N)
+	@unpack N, cutoff, l = data
 
-	for i in 1:data.N
+	first_atom = zeros(Int64, l, l)
+	next_atom = zeros(Int64, N)
 
-		ic = trunc(Int64, p[i][1]/data.cutoff) + 1
-		jc = trunc(Int64, p[i][2]/data.cutoff) + 1
+	for i in 1:N
+
+		ic = trunc(Int64, p[i][1]/cutoff) + 1
+		jc = trunc(Int64, p[i][2]/cutoff) + 1
 
 		next_atom[i] = first_atom[ic, jc]
 		first_atom[ic, jc] = i
