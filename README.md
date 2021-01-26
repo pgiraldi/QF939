@@ -60,6 +60,9 @@ julia> f
 - [x] Estrutura de dados
 - [x] Listas ligadas
 - [x] Paralelização
+- [x] Cálculo da energia e das forças
+- [ ] Velocidades iniciais
+- [ ] Integração da equações de movimento
 
 ## Benchmark
 
