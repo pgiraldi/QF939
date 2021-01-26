@@ -12,6 +12,8 @@ using Parameters
 
 	l :: Int64 = trunc(Int64, side/cutoff)
 
+	cutoff2 :: Float64 = cutoff^2
 	sig6 :: Float64 = (sig^2)^3
 	eps4 :: Float64 = 4*eps*sig6
+	eps24 :: Float64 = 6*eps4
 end

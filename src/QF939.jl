@@ -9,9 +9,12 @@ module QF939
 	include("./div_thread.jl")
 	include("./initial_linklist.jl")
 	include("./rpbc.jl")
+	include("./rpbc_quad.jl")
 	include("./wrap_cell.jl")
 	include("./upair.jl")
 	include("./utotal.jl")
-	export utotal
+	include("./ufpair.jl")
+	include("./uftotal.jl")
+	export utotal, uftotal
 
 end

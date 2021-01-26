@@ -1,12 +1,13 @@
-function utotal(p, data :: Data)
+function uftotal(p, data :: Data)
 
-	@unpack N, cutoff, side, l = data
+	@unpack N, cutoff, side, l, cutoff2 = data
 
 	nt = Threads.nthreads()
+	npt = div_thread(N, nt)
 
 	U = zeros(nt)
+	F = [ [0.0, 0.0] for i in 1:N ]
 
-	npt = div_thread(N, nt)
 	first_atom, next_atom = initial_linklist(p, data)
 
 	Threads.@threads for id in 1:nt
@@ -26,10 +27,16 @@ function utotal(p, data :: Data)
 
 					if j > i
 
-						r = rpbc(p[i], p[j], side)
+						r = rpbc_quad(p[i], p[j], side) # r = (rx, ry, r^2)
 
-						if r < cutoff
-							U[id] += upair(r, data)
+						if r[3] < cutoff2
+
+							u, f = ufpair(r, data)
+
+							F[i] .+= f
+							F[j] .-= f
+
+							U[id] += u
 						end
 					end
 
@@ -39,5 +46,5 @@ function utotal(p, data :: Data)
 		end
 	end
 
-	return sum(U)
+	return sum(U), F
 end
